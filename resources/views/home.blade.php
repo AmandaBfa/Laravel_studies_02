@@ -1,28 +1,33 @@
 @extends('layouts/main_layout')
 @section('content')
-    {{-- for --}}
-    @for ($index = 0; $index < 5; $index++)
-        <h1>{{ $index }}</h1>
+    {{-- usando o continue e break --}}
+    @for ($index = 0; $index < 10; $index++)
+        {{-- continue --}}
+        {{-- se o indice for igual ao valor referido, ele vai continuar apos ser ele --}}
+        @if ($index == 5)
+            @continue
+        @endif
+
+        <p>Index: {{ $index }}</p>
+
+        {{-- break --}}
+        @if ($index == 7)
+            @break
+        @endif
     @endfor
 
-    {{-- foreach --}}
+    {{-- loop variable --}}
     @foreach ($cities as $city)
         <h1>{{ $city }}</h1>
+        <h3>{{ $loop->index }}</h3>
+        {{--  --}}
+
+        @if ($loop->first)
+            <h3>Primeira Cidade</h3>
+        @endif
+
+        @if ($loop->last)
+            <h3>Última Cidade</h3>
+        @endif
     @endforeach
-
-    {{-- forelse --}}
-    {{--  é uma estrutura de repetição do Blade que funciona como um foreach, mas com um "plano B" caso a lista esteja vazia. --}}
-    @forelse ($names as $name)
-        <p>{{ $name }}</p>
-    @empty
-        <p>Names está vazio!!!!!</p>
-    @endforelse
-
-    {{-- while --}}
-    @while ($indice < 16)
-        <p>Índice: {{ $indice }}</p>
-        @php
-            $indice++;
-        @endphp
-    @endwhile
 @endsection
