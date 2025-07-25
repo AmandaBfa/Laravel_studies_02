@@ -26,12 +26,12 @@ class MainController extends Controller
         //     'phone' => "123456789"
         // ]);
 
-        // // método 2
+        // // método 3
         // return view('admin.newPage3')
         //     ->with('name', "Amanda Barbarosa")
         //     ->with('phone', "62901011213");
 
-        // método 3
+        // método 4
         $name = 'Amanda Barbarosa';
         $phone = '62901011213';
 
