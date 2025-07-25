@@ -1,27 +1,21 @@
 @extends('layouts/main_layout')
 @section('content')
-    {{-- instrução IF simples --}}
-    @if ($value == 100)
-        <h1>Primeira parte do código</h1>
-    @endif
+    {{-- switch --}}
+    @switch($value)
+        @case(100)
+            <h1>Valor 100</h1>
+        @break
 
-    {{-- instrução IF ELSE --}}
-    @if ($value !== 100)
-        <h1>Primeira parte do código</h1>
-    @else
-        <h1>Segunda parte do código</h1>
-    @endif
+        @case(200)
+            <h1>Valor 200</h1>
+        @break
 
-    {{-- instrução IF ELSEIF ELSE ENDIF --}}
-    @if ($value < 10)
-        <p>PRIMEIRO</p>
-    @elseif($value < 20)
-        <p>SEGUNDO</p>
-    @elseif($value < 50)
-        <p>TERCEIRO</p>
-    @elseif($value <= 100)
-        <p>QUARTO</p>
-    @else
-        <p>OUTRO CASO</p>
-    @endif
+        @case(300)
+            <h1>Valor 300</h1>
+        @break
+
+        @default
+            {{-- bloco de código que será executado se nenhum dos case corresponder ao valor testado. --}}
+            <h1>Outro!</h1>
+    @endswitch
 @endsection
