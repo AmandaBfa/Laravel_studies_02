@@ -1,22 +1,28 @@
 @extends('layouts/main_layout')
 @section('content')
-    {{-- empty --}}
-    @empty($value)
-        <p>Não existe!</p>
-    @else
-        <p>Existe!</p>
-    @endempty
+    {{-- for --}}
+    @for ($index = 0; $index < 5; $index++)
+        <h1>{{ $index }}</h1>
+    @endfor
 
-    {{-- isste --}}
-    @isset($values)
-        <p>Existe a Váriavel!</p>
-    @else
-        <p>Não existe a Váriavel!</p>
-    @endisset
+    {{-- foreach --}}
+    @foreach ($cities as $city)
+        <h1>{{ $city }}</h1>
+    @endforeach
 
-    {{-- unless --}}
-    {{-- so se a condição que estiver dentro for negativa que o código vai ser executado --}}
-    @unless ($value != 100)
-        <p>OK!!!!!</p>
-    @endunless
+    {{-- forelse --}}
+    {{--  é uma estrutura de repetição do Blade que funciona como um foreach, mas com um "plano B" caso a lista esteja vazia. --}}
+    @forelse ($names as $name)
+        <p>{{ $name }}</p>
+    @empty
+        <p>Names está vazio!!!!!</p>
+    @endforelse
+
+    {{-- while --}}
+    @while ($indice < 16)
+        <p>Índice: {{ $indice }}</p>
+        @php
+            $indice++;
+        @endphp
+    @endwhile
 @endsection
